@@ -17,4 +17,4 @@
 
 | Type           | Identify rules                           | Scope                                        | Value when do not init                     |
 | -------------- | ---------------------------------------- | -------------------------------------------- | ------------------------------------------ |
-| Local variable | First character: alphabeta or underscore | The nearest scope(where variable is defined) | If defined -> nil, else -> raise exception |
+| Local variable | First character: alphabeta or underscore | The nearest scope(where variable is defined) | If defined -> nil, else -> raise exception
