@@ -19,3 +19,6 @@
  -------------- | ---------------------------------------- | -------------------------------------------- | ------------------------------------------ |
  Local variable | First character: alphabeta or underscore | The nearest scope(where variable is defined) | If defined -> nil, else -> raise exception
 Global variable | First character: $ | All | nil
+Class variable | First character: @@ | All instances of class can see | raise exception
+Instance variable | First character: @ | Only in that instance | nil
+Constant | First character: Must be upcase | | raise exception
