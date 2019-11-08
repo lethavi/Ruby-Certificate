@@ -22,3 +22,41 @@ Global variable | First character: $ | All | nil
 Class variable | First character: @@ | All instances of class can see | raise exception
 Instance variable | First character: @ | Only in that instance | nil
 Constant | First character: Must be upcase | | raise exception
+
+- Example for scope of variable, constant:
+  - Local variable:
+    ```
+    foo = 1
+    def call_variable
+      puts foo
+    end
+    call_variable -> raise exception
+    ```
+  - Global variable:
+    ```
+    $foo = 1
+    def call_variable
+      puts $foo
+    end
+    call_variable -> 1
+    ```
+  - Class variable:
+    ```
+    class Test
+      @@class_var_1 = 100
+      def instance_method_call_defined_variable
+        puts @@class_var_1
+      end
+      def instance_method_call_undefined_variable
+        puts @@class_var_2
+      end
+      class << self
+        def instance_method_call_undefined_variable
+          puts @@class_var_1
+        end
+      end
+    end
+    Test.new.instance_method_call_defined_variable → 100
+    Test.new.instance_method_call_undefined_variable → raise exception
+    Test.class_method_call_defined_variable → 100
+    ```
