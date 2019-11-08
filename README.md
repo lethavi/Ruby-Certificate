@@ -60,3 +60,29 @@ Constant | First character: Must be upcase | | raise exception
     Test.new.instance_method_call_undefined_variable → raise exception
     Test.class_method_call_defined_variable → 100
     ```
+  - Constant:
+    ```
+    module TestConstant
+      TEST_CONSTANT = 1
+
+      def instance_call_constant
+        puts TEST_CONSTANT
+      end
+
+      class << self
+        def class_call_constant
+          puts TEST_CONSTANT
+        end
+      end
+    end
+
+    class TestConstantClass
+      include TestConstant
+    end
+
+    TestConstantClass.class_call_constant → raise exception
+    TestConstant.class_call_constant → 1
+    TestConstantClass.new.instance_call_constant → 1
+    TestConstantClass::TEST_CONSTANT → 1
+    TestConstant::TEST_CONSTANT → 1
+    ```
